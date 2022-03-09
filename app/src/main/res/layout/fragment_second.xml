@@ -99,7 +99,7 @@
         android:layout_marginVertical="8dip"
         android:layout_marginHorizontal="16dp"
         android:backgroundTint="#DA56F1"
-        android:text="@string/hide_info"
+        android:text="@string/save"
         android:textSize="20sp"
         app:cornerRadius="30dp" />
 

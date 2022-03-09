@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.hw9_2.databinding.FragmentFirstBinding
+import com.example.hw9_2.databinding.FragmentSecondBinding
 
 
 class firstFragment : Fragment() {
@@ -33,26 +34,22 @@ class firstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.button.setOnClickListener {
-            var sharedPreferences = activity?.getSharedPreferences("share", Context.MODE_PRIVATE)
 
-            val editor: SharedPreferences.Editor = sharedPreferences!!.edit()
-            editor.putString("name", binding.myEditText1.text.toString())
-            editor.putString("user", binding.myEditText2.text.toString())
-            editor.putString("email", binding.myEditText3.text.toString())
-            editor.putString("password", binding.myEditText5.text.toString())
-            Toast.makeText(activity, "shared successfully", Toast.LENGTH_SHORT).show()
 
             var bundle = Bundle()
             bundle.putString("name", binding.myEditText1.text.toString())
             bundle.putString("user", binding.myEditText2.text.toString())
             bundle.putString("email", binding.myEditText3.text.toString())
             bundle.putString("password", binding.myEditText5.text.toString())
-
+            var gender = ""
+            if (binding.radioButton3.isChecked){
+                gender = "male"
+            }
+            else if (binding.radioButton2.isChecked){
+                gender = "female"
+            }
+            bundle.putString("gender", gender)
             findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
-        }
-
-        binding.button2.setOnClickListener {
-            findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
         }
     }
 
