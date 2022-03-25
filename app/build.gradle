@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -32,7 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
-    buildscript {
+  /*  buildscript {
         repositories {
             google()
         }
@@ -41,6 +43,8 @@ android {
             classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         }
     }
+
+   */
 }
 
 dependencies {
@@ -60,5 +64,13 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+  //  classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
 }

@@ -27,11 +27,12 @@ class secondFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.textView1.text = requireArguments().getString("name").toString()
-        binding.textView2.text = requireArguments().getString("user").toString()
-        binding.textView3.text = requireArguments().getString("email").toString()
-        binding.textView4.text = requireArguments().getString("password").toString()
-        binding.textView5.text = requireArguments().getString("gender").toString()
+        val args = secondFragmentArgs.fromBundle(requireArguments())
+        binding.textView1.text = args.name
+        binding.textView2.text = args.userName
+        binding.textView3.text = args.email
+        binding.textView4.text = args.password
+        binding.textView5.text = args.gender
 
         binding.button3.setOnClickListener {
             var sharedPreferences = activity?.getSharedPreferences("share", Context.MODE_PRIVATE)

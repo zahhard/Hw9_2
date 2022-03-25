@@ -34,13 +34,6 @@ class firstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.button.setOnClickListener {
-
-
-            var bundle = Bundle()
-            bundle.putString("name", binding.myEditText1.text.toString())
-            bundle.putString("user", binding.myEditText2.text.toString())
-            bundle.putString("email", binding.myEditText3.text.toString())
-            bundle.putString("password", binding.myEditText5.text.toString())
             var gender = ""
             if (binding.radioButton3.isChecked){
                 gender = "male"
@@ -48,15 +41,26 @@ class firstFragment : Fragment() {
             else if (binding.radioButton2.isChecked){
                 gender = "female"
             }
+
+            view.findNavController().navigate(firstFragmentDirections.actionFirstFragmentToSecondFragment(
+                binding.myEditText1.text.toString(),
+                binding.myEditText2.text.toString(),
+                binding.myEditText3.text.toString(),
+                binding.myEditText5.text.toString(),
+                gender)
+            )
+
+
+/*
+            var bundle = Bundle()
+            bundle.putString("name", binding.myEditText1.text.toString())
+            bundle.putString("user", binding.myEditText2.text.toString())
+            bundle.putString("email", binding.myEditText3.text.toString())
+            bundle.putString("password", binding.myEditText5.text.toString())
             bundle.putString("gender", gender)
-            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+
+ */
+           // findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
         }
     }
-
-//    override fun onClick(view: View) {
-//        val action =
-//            SpecifyAmountFragmentDirections
-//                .actionSpecifyAmountFragmentToConfirmationFragment()
-//        view.findNavController().navigate(action)
-//    }
 }
